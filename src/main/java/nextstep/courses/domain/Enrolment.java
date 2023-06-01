@@ -19,4 +19,8 @@ public class Enrolment {
     public void enroll(NsUser user) {
         enrolment.add(user);
     }
+
+    public boolean isFull(int size) {
+        return enrolment.size() >= size;
+    }
 }

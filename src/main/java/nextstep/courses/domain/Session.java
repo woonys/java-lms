@@ -79,7 +79,7 @@ public class Session {
     }
 
     private boolean isMoreThanMaximumClassSize() {
-        return enrolment.count() >= maximumClassSize.maxSize();
+        return enrolment.isFull(maximumClassSize.maxSize());
     }
 
     public void enroll(NsUser user) {
