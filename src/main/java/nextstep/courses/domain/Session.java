@@ -10,15 +10,14 @@ public class Session {
     private SessionStatus sessionStatus;
     private LocalDate startDate;
     private LocalDate endDate;
-    private Enrolment enrolment;
+    private Enrollment enrollment;
     private MaximumClassSize maximumClassSize;
-
     private Image image;
 
     public Session(SessionStatus sessionStatus, MaximumClassSize maximumClassSize) {
         this.sessionStatus = sessionStatus;
         this.maximumClassSize = maximumClassSize;
-        this.enrolment = new Enrolment();
+        this.enrollment = new Enrollment();
     }
 
     public Session() {
@@ -74,19 +73,19 @@ public class Session {
         return sessionStatus.isClosed();
     }
 
-    public boolean isEnrolmentPossible() {
+    public boolean isEnrollPossible() {
         return isOpen() && !isMoreThanMaximumClassSize();
     }
 
     private boolean isMoreThanMaximumClassSize() {
-        return enrolment.isFull(maximumClassSize.maxSize());
+        return enrollment.isFull(maximumClassSize.maxSize());
     }
 
     public void enroll(NsUser user) {
-        if (!isEnrolmentPossible()) {
+        if (!isEnrollPossible()) {
             throw new IllegalStateException("수강 인원이 초과되었습니다.");
         }
-        enrolment.enroll(user);
+        enrollment.enroll(user);
     }
 
 }

@@ -64,9 +64,9 @@ public class SessionTest {
         Session readySession = new Session(SessionStatus.READY);
         Session closedSession = new Session(SessionStatus.CLOSED);
 
-        assertThat(openSession.isEnrolmentPossible()).isTrue();
-        assertThat(readySession.isEnrolmentPossible()).isFalse();
-        assertThat(closedSession.isEnrolmentPossible()).isFalse();
+        assertThat(openSession.isEnrollPossible()).isTrue();
+        assertThat(readySession.isEnrollPossible()).isFalse();
+        assertThat(closedSession.isEnrollPossible()).isFalse();
     }
 
     @DisplayName("강의는 강의 최대 수강 인원을 초과할 수 없다.")
@@ -81,6 +81,5 @@ public class SessionTest {
         assertThatThrownBy(() -> {
             openSession.enroll(user2);
         }).isInstanceOf(IllegalStateException.class);
-
     }
 }
