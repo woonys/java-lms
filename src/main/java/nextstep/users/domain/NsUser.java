@@ -1,9 +1,13 @@
 package nextstep.users.domain;
 
+import nextstep.courses.domain.Sessions;
 import nextstep.qna.UnAuthorizedException;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Objects;
+
+import org.springframework.cglib.core.Local;
 
 public class NsUser {
     public static final GuestNsUser GUEST_USER = new GuestNsUser();
@@ -21,15 +25,20 @@ public class NsUser {
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
+    private Sessions sessions;
 
     public NsUser() {
     }
 
     public NsUser(Long id, String userId, String password, String name, String email) {
-        this(id, userId, password, name, email, LocalDateTime.now(), null);
+        this(id, userId, password, name, email, LocalDateTime.now(), null, null);
     }
 
     public NsUser(Long id, String userId, String password, String name, String email, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this(id, userId, password, name, email, createdAt, updatedAt, null);
+    }
+
+    public NsUser(Long id, String userId, String password, String name, String email, LocalDateTime createdAt, LocalDateTime updatedAt, Sessions sessions) {
         this.id = id;
         this.userId = userId;
         this.password = password;
@@ -37,6 +46,7 @@ public class NsUser {
         this.email = email;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.sessions = sessions;
     }
 
     public Long getId() {

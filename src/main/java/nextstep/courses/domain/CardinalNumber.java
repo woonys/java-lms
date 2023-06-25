@@ -6,4 +6,8 @@ public class CardinalNumber {
     public CardinalNumber(int cardinalNumber) {
         this.cardinalNumber = cardinalNumber;
     }
+
+    public int cardinalNumber() {
+        return cardinalNumber;
+    }
 }

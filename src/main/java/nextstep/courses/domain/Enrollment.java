@@ -12,6 +12,10 @@ public class Enrollment {
         this.enrollment = new ArrayList<>();
     }
 
+    public Enrollment(List<NsUser> users) {
+        this.enrollment = users;
+    }
+
     public void enroll(NsUser user) {
         enrollment.add(user);
     }
